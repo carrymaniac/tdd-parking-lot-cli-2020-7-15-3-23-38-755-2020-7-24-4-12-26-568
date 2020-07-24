@@ -10,13 +10,6 @@ package com.oocl.cultivation;
  * @Version:
  */
 public class ParkingBoy {
-    public ParkingLot getParkingLot() {
-        return parkingLot;
-    }
-
-    public void setParkingLot(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
 
     private ParkingLot parkingLot;
 
