@@ -10,16 +10,26 @@ public class ParkingLot {
     }
 
     public ParkingLot() {
+        this.capacity = 10;
     }
 
     public CarTicket park(Car car) {
-        CarTicket carTicket = new CarTicket();
-        parkingRoom.put(carTicket, car);
-        return carTicket;
+        if(capacity<10){
+            CarTicket carTicket = new CarTicket();
+            parkingRoom.put(carTicket, car);
+            capacity++;
+            return carTicket;
+        }else {
+            return null;
+        }
     }
 
     public Car fetch(CarTicket carTicket) {
-        return parkingRoom.remove(carTicket);
+        Car remove = parkingRoom.remove(carTicket);
+        if(remove!=null){
+            capacity--;
+        }
+        return remove;
     }
 
     public HashMap<CarTicket, Car> getParkingRoom() {
