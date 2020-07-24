@@ -29,6 +29,6 @@ public class ParkingBoy {
     }
 
     public Car fetch(CarTicket carTicket) {
-        return null;
+        return parkingLot.fetch(carTicket);
     }
 }
