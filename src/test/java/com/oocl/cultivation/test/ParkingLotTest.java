@@ -43,4 +43,14 @@ public class ParkingLotTest {
         //then
         assertNull(fetch);
     }
+
+    @Test
+    void should_fetch_null_when_fetch_given_null(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        //when
+        Car fetch = parkingLot.fetch(null);
+        //then
+        assertNull(fetch);
+    }
 }
