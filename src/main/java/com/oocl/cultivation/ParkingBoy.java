@@ -25,6 +25,6 @@ public class ParkingBoy {
     }
 
     public CarTicket park(Car car) {
-        return null;
+        return parkingLot.park(car);
     }
 }
