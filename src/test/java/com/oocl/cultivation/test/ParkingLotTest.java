@@ -34,6 +34,25 @@ public class ParkingLotTest {
     }
 
     @Test
+    void should_fetch_right_car_when_fetch_given_correspond_ticket() {
+        //given
+        Car carA = new Car();
+        Car carB = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        CarTicket carTicketA = parkingLot.park(carA);
+        CarTicket carTicketB = parkingLot.park(carB);
+        //when
+        Car fetchCarA = parkingLot.fetch(carTicketA);
+        Car fetchCarB = parkingLot.fetch(carTicketB);
+        //then
+        assertNotNull(fetchCarA);
+        assertNotNull(fetchCarB);
+        assertEquals(carA, fetchCarA);
+        assertEquals(carB, fetchCarB);
+        assertNotEquals(fetchCarA,fetchCarB);
+    }
+
+    @Test
     void should_fetch_null_when_fetch_given_wrong_ticket(){
         //given
         CarTicket carTicket = new CarTicket();
