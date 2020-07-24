@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class ParkingLot {
     private final HashMap<CarTicket, Car> parkingRoom = new HashMap<>();
     private Integer capacity;
+    private Integer nowCars = 0;
     public ParkingLot(int capacity) {
         this.capacity = capacity;
     }
@@ -14,10 +15,10 @@ public class ParkingLot {
     }
 
     public CarTicket park(Car car) {
-        if(capacity<10){
+        if(nowCars<capacity){
             CarTicket carTicket = new CarTicket();
             parkingRoom.put(carTicket, car);
-            capacity++;
+            nowCars++;
             return carTicket;
         }else {
             return null;
@@ -27,7 +28,7 @@ public class ParkingLot {
     public Car fetch(CarTicket carTicket) {
         Car remove = parkingRoom.remove(carTicket);
         if(remove!=null){
-            capacity--;
+            nowCars--;
         }
         return remove;
     }
