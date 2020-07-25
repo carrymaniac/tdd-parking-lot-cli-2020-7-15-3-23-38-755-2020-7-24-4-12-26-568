@@ -79,16 +79,17 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_fetch_null_when_fetch_given_used_ticket(){
+    void should_fetch_error_message_when_fetch_given_used_ticket(){
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         CarTicket carTicket = parkingLot.park(car);
         //when
         Car fetchCar = parkingLot.fetch(carTicket).getCar();
-        Car fetchAgainCar = parkingLot.fetch(carTicket).getCar();
+        FetchResult fetchResult = parkingLot.fetch(carTicket);
         //then
-        assertNull(fetchAgainCar);
+        assertNotNull(fetchResult);
+        assertEquals("Unrecognized parking ticket.",fetchResult.getMessage());
     }
     @Test
     void should_return_null_when_park_given_11_tickets() {
