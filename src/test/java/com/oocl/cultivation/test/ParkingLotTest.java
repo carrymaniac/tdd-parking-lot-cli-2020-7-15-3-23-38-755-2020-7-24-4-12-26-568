@@ -64,7 +64,7 @@ public class ParkingLotTest {
         //when
         FetchResult fetch = parkingLot.fetch(carTicket);
         //then
-        assertNull(fetch);
+        assertNotNull(fetch);
         assertEquals("Unrecognized parking ticket.",fetch.getMessage());
     }
 
