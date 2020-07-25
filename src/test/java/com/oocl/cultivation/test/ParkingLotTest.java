@@ -69,13 +69,14 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_fetch_null_when_fetch_given_null(){
+    void should_fetch_error_message_when_fetch_given_null(){
         //given
         ParkingLot parkingLot = new ParkingLot();
         //when
-        Car fetch = parkingLot.fetch(null).getCar();
+        FetchResult fetch = parkingLot.fetch(null);
         //then
-        assertNull(fetch);
+        assertNotNull(fetch);
+        assertEquals("Please provide your parking ticket.",fetch.getMessage());
     }
 
     @Test
