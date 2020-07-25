@@ -14,11 +14,11 @@ public class ParkingLot {
         this.capacity = 10;
     }
 
-    public CarTicket park(Car car) {
+    public ParkResult park(Car car) {
         if (capacity-parkingRoom.size()>0&&!parkingRoom.containsValue(car)) {
             CarTicket carTicket = new CarTicket();
             parkingRoom.put(carTicket, car);
-            return carTicket;
+            return new ParkResult("",carTicket);
         } else {
             return null;
         }

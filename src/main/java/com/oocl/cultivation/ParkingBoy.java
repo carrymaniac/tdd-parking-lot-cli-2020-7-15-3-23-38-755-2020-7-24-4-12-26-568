@@ -18,7 +18,7 @@ public class ParkingBoy {
     }
 
     public CarTicket park(Car car) {
-        return parkingLot.park(car);
+        return parkingLot.park(car).getCarTicket();
     }
 
     public Car fetch(CarTicket carTicket) {

@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.FetchResult;
-import com.oocl.cultivation.ParkingLot;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,7 +14,7 @@ public class ParkingLotTest {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         //when
-        CarTicket carTicket = parkingLot.park(car);
+        CarTicket carTicket = parkingLot.park(car).getCarTicket();
         //then
         assertNotNull(carTicket);
     }
@@ -28,7 +25,7 @@ public class ParkingLotTest {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
-        CarTicket carTicket = parkingLot.park(car);
+        CarTicket carTicket = parkingLot.park(car).getCarTicket();
         //when
         Car fetchCar = parkingLot.fetch(carTicket).getCar();
         //then
@@ -42,8 +39,8 @@ public class ParkingLotTest {
         Car carA = new Car();
         Car carB = new Car();
         ParkingLot parkingLot = new ParkingLot();
-        CarTicket carTicketA = parkingLot.park(carA);
-        CarTicket carTicketB = parkingLot.park(carB);
+        CarTicket carTicketA = parkingLot.park(carA).getCarTicket();
+        CarTicket carTicketB = parkingLot.park(carB).getCarTicket();
         //when
         Car fetchCarA = parkingLot.fetch(carTicketA).getCar();
         Car fetchCarB = parkingLot.fetch(carTicketB).getCar();
@@ -84,7 +81,7 @@ public class ParkingLotTest {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
-        CarTicket carTicket = parkingLot.park(car);
+        CarTicket carTicket = parkingLot.park(car).getCarTicket();
         //when
         Car fetchCar = parkingLot.fetch(carTicket).getCar();
         FetchResult fetchResult = parkingLot.fetch(carTicket);
@@ -93,17 +90,14 @@ public class ParkingLotTest {
         assertEquals("Unrecognized parking ticket.",fetchResult.getMessage());
     }
     @Test
-    void should_return_null_when_park_given_11_tickets() {
-        ArrayList<Car> cars = new ArrayList<>();
-        for(int i = 0;i<11;i++){
-            cars.add(new Car());
-        }
+    void should_return_error_message_when_park_given_11_tickets() {
         ParkingLot parkingLot = new ParkingLot(10);
         for(int i = 0;i<10;i++){
-            parkingLot.park(cars.get(i));
+            parkingLot.park(new Car());
         }
-        CarTicket park = parkingLot.park(cars.get(10));
-        assertNull(park);
+        ParkResult parkResult = parkingLot.park(new Car());
+        assertNotNull(parkResult);
+        assertEquals("Not enough position.",parkResult.getMessage());
     }
 
 }
