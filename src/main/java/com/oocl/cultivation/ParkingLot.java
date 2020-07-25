@@ -20,7 +20,7 @@ public class ParkingLot {
             parkingRoom.put(carTicket, car);
             return new ParkResult("",carTicket);
         } else {
-            return null;
+            return new ParkResult("Not enough position.",null);
         }
     }
 
