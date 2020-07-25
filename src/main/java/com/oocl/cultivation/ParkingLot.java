@@ -25,6 +25,9 @@ public class ParkingLot {
     }
 
     public FetchResult fetch(CarTicket carTicket) {
+        if(carTicket==null){
+            return new FetchResult("Please provide your parking ticket.",null);
+        }
         Car remove = parkingRoom.remove(carTicket);
         if(remove==null){
             return new FetchResult("Unrecognized parking ticket.",null);
