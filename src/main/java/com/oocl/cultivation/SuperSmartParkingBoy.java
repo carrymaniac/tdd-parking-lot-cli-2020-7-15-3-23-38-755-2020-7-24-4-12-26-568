@@ -12,18 +12,18 @@ import java.util.List;
  * @Version:
  */
 public class SuperSmartParkingBoy implements ParkingBoy{
-
-    public SuperSmartParkingBoy(List<ParkingLot> asList) {
-
+    List<ParkingLot> parkingLots;
+    public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
     @Override
     public ParkResult park(Car car) {
-        return null;
+        return parkingLots.get(0).park(car);
     }
 
     @Override
     public List<ParkingLot> getParkingLots() {
-        return null;
+        return this.parkingLots;
     }
 }

@@ -37,7 +37,7 @@ As a parking lots service manager, I would like to have a parking boy parking ca
 
 AC1. The parking boy is not that clever, and he will always park cars sequentially (suppose that there are two parking lots managed by the parking boy. The parking boy will park cars to the second parking lot when the first parking lot is full).
 
-AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
+AC2: All the requirement in *Story 1   and *Story 2* **MUST** be satisfied.
 
 ## Story 4
 
