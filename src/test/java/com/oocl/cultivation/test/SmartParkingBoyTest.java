@@ -41,11 +41,23 @@ public class SmartParkingBoyTest {
         assertEquals(car,fetchResult.getCar());
     }
 
+    @Test
+    void should_fetch_car_from_more_empty_positions_parking_lot_when_fetch_given_car_ticket(){
+        Car car = new Car();
+        ParkingLot parkingLotA = new ParkingLot();
+        ParkingLot parkingLotB = new ParkingLot(20);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
+        //when
+        ParkResult parkResult = smartParkingBoy.park(new Car());
+        FetchResult fetchResult = smartParkingBoy.fetch(parkResult.getCarTicket());
+        assertNotNull(fetchResult);
+        assertNotNull(fetchResult.getCar());
+    }
+
 
     @Test
     void should_park_car_in_have_more_empty_positions_parking_lot_when_park_given_car(){
         //given
-        Car car = new Car();
         ParkingLot parkingLotA = new ParkingLot();
         ParkingLot parkingLotB = new ParkingLot(20);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
