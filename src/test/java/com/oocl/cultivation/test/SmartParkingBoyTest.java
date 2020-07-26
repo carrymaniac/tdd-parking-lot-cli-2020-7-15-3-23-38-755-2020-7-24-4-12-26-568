@@ -54,4 +54,5 @@ public class SmartParkingBoyTest {
         //then
         assertTrue(parkingLotB.getRemainingPosition()<20);
     }
+
 }

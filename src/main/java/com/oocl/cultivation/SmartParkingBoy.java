@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @ProjectName: parking-lot
@@ -19,7 +20,14 @@ public class SmartParkingBoy {
     }
 
     public ParkResult park(Car car){
-        return parkingLots.get(0).park(car);
+        Optional<ParkingLot> first = parkingLots.stream()
+                .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
+                .max((a,b)-> a.getRemainingPosition()>=b.getRemainingPosition()?1:-1);
+        if (first.isPresent()) {
+            return first.get().park(car);
+        } else {
+            return this.parkingLots.get(0).park(car);
+        }
     }
 
     public FetchResult fetch(CarTicket ticket){
