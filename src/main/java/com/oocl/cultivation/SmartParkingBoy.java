@@ -31,6 +31,12 @@ public class SmartParkingBoy {
     }
 
     public FetchResult fetch(CarTicket ticket){
+        for (int i = 0; i < parkingLots.size(); i++) {
+            FetchResult fetchResult = parkingLots.get(i).fetch(ticket);
+            if (fetchResult.getCar() != null) {
+                return fetchResult;
+            }
+        }
         return parkingLots.get(0).fetch(ticket);
     }
 }

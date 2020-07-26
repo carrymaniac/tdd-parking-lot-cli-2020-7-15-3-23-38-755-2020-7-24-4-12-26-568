@@ -43,7 +43,6 @@ public class SmartParkingBoyTest {
 
     @Test
     void should_fetch_car_from_more_empty_positions_parking_lot_when_fetch_given_car_ticket(){
-        Car car = new Car();
         ParkingLot parkingLotA = new ParkingLot();
         ParkingLot parkingLotB = new ParkingLot(20);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
