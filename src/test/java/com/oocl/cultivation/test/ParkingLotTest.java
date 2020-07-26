@@ -3,8 +3,6 @@ package com.oocl.cultivation.test;
 import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -49,12 +47,12 @@ public class ParkingLotTest {
         assertNotNull(fetchCarB);
         assertEquals(carA, fetchCarA);
         assertEquals(carB, fetchCarB);
-        assertNotEquals(fetchCarA,fetchCarB);
+        assertNotEquals(fetchCarA, fetchCarB);
     }
 
     //todo
     @Test
-    void should_fetch_error_message_when_fetch_given_wrong_ticket(){
+    void should_fetch_error_message_when_fetch_given_wrong_ticket() {
         //given
         CarTicket carTicket = new CarTicket();
         ParkingLot parkingLot = new ParkingLot();
@@ -62,22 +60,22 @@ public class ParkingLotTest {
         FetchResult fetch = parkingLot.fetch(carTicket);
         //then
         assertNotNull(fetch);
-        assertEquals("Unrecognized parking ticket.",fetch.getMessage());
+        assertEquals("Unrecognized parking ticket.", fetch.getMessage());
     }
 
     @Test
-    void should_fetch_error_message_when_fetch_given_null(){
+    void should_fetch_error_message_when_fetch_given_null() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         //when
         FetchResult fetch = parkingLot.fetch(null);
         //then
         assertNotNull(fetch);
-        assertEquals("Please provide your parking ticket.",fetch.getMessage());
+        assertEquals("Please provide your parking ticket.", fetch.getMessage());
     }
 
     @Test
-    void should_fetch_error_message_when_fetch_given_used_ticket(){
+    void should_fetch_error_message_when_fetch_given_used_ticket() {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
@@ -87,17 +85,18 @@ public class ParkingLotTest {
         FetchResult fetchResult = parkingLot.fetch(carTicket);
         //then
         assertNotNull(fetchResult);
-        assertEquals("Unrecognized parking ticket.",fetchResult.getMessage());
+        assertEquals("Unrecognized parking ticket.", fetchResult.getMessage());
     }
+
     @Test
     void should_return_error_message_when_park_given_11_tickets() {
         ParkingLot parkingLot = new ParkingLot(10);
-        for(int i = 0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             parkingLot.park(new Car());
         }
         ParkResult parkResult = parkingLot.park(new Car());
         assertNotNull(parkResult);
-        assertEquals("Not enough position.",parkResult.getMessage());
+        assertEquals("Not enough position.", parkResult.getMessage());
     }
 
 }

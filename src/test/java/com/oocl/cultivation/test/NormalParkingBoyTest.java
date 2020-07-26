@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @ProjectName: parking-lot
@@ -16,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Date: 2020/7/24 3:44 下午
  * @Version:
  */
-public class ParkingBoyTest {
+public class NormalParkingBoyTest {
     @Test
     void should_return_park_result_when_park_given_car() {
         //given
         Car car = new Car();
-        ParkingBoy boy = new ParkingBoy(Arrays.asList(new ParkingLot()));
+        NormalParkingBoy boy = new NormalParkingBoy(Arrays.asList(new ParkingLot()));
         //when
         ParkResult parkResult = boy.park(car);
         //then
@@ -32,20 +33,19 @@ public class ParkingBoyTest {
     void should_return_fetch_result_when_fetch_given_car_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy boy = new ParkingBoy(Arrays.asList(new ParkingLot()));
+        NormalParkingBoy boy = new NormalParkingBoy(Arrays.asList(new ParkingLot()));
         CarTicket carTicket = boy.park(car).getCarTicket();
         //when
         FetchResult fetchResult = boy.fetch(carTicket);
         //then
         assertNotNull(fetchResult);
-        assertEquals(car,fetchResult.getCar());
+        assertEquals(car, fetchResult.getCar());
     }
 
 
-
     @Test
-    void should_return_success_park_result_when_park_given_11_cars(){
-        ParkingBoy boy = new ParkingBoy(Arrays.asList(new ParkingLot(),new ParkingLot()));
+    void should_return_success_park_result_when_park_given_11_cars() {
+        NormalParkingBoy boy = new NormalParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
         for (int i = 0; i < 10; i++) {
             boy.park(new Car());
         }
@@ -55,8 +55,8 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void should_return_success_fetch_result_when_fetch_given_11st_car_ticket(){
-        ParkingBoy boy = new ParkingBoy(Arrays.asList(new ParkingLot(),new ParkingLot()));
+    void should_return_success_fetch_result_when_fetch_given_11st_car_ticket() {
+        NormalParkingBoy boy = new NormalParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
         for (int i = 0; i < 10; i++) {
             boy.park(new Car());
         }

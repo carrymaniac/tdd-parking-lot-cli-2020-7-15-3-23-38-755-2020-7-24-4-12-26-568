@@ -6,16 +6,16 @@ import java.util.Optional;
 /**
  * @ProjectName: parking-lot
  * @Package: com.oocl.cultivation
- * @ClassName: SmartParkingBoy
+ * @ClassName: ParkingBoy
  * @Author: carrymaniac
  * @Description:
- * @Date: 2020/7/26 12:57 下午
+ * @Date: 2020/7/24 3:47 下午
  * @Version:
  */
-public class SmartParkingBoy implements ParkingBoy {
+public class NormalParkingBoy implements ParkingBoy {
     List<ParkingLot> parkingLots;
 
-    public SmartParkingBoy(List<ParkingLot> parkingLots) {
+    public NormalParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
@@ -23,7 +23,7 @@ public class SmartParkingBoy implements ParkingBoy {
     public ParkResult park(Car car) {
         Optional<ParkingLot> first = parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                .max((a, b) -> a.getRemainingPosition() >= b.getRemainingPosition() ? 1 : -1);
+                .findFirst();
         if (first.isPresent()) {
             return first.get().park(car);
         } else {

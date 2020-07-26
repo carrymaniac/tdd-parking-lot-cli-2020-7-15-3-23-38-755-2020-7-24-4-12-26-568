@@ -29,7 +29,7 @@ public class SmartParkingBoyTest {
     }
 
     @Test
-    void should_return_fetch_result_when_fetch_given_car_ticket(){
+    void should_return_fetch_result_when_fetch_given_car_ticket() {
         //given
         Car car = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot()));
@@ -38,14 +38,14 @@ public class SmartParkingBoyTest {
         FetchResult fetchResult = smartParkingBoy.fetch(parkResult.getCarTicket());
         //then
         assertNotNull(fetchResult);
-        assertEquals(car,fetchResult.getCar());
+        assertEquals(car, fetchResult.getCar());
     }
 
     @Test
-    void should_fetch_car_from_more_empty_positions_parking_lot_when_fetch_given_car_ticket(){
+    void should_fetch_car_from_more_empty_positions_parking_lot_when_fetch_given_car_ticket() {
         ParkingLot parkingLotA = new ParkingLot();
         ParkingLot parkingLotB = new ParkingLot(20);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA, parkingLotB));
         //when
         ParkResult parkResult = smartParkingBoy.park(new Car());
         FetchResult fetchResult = smartParkingBoy.fetch(parkResult.getCarTicket());
@@ -55,15 +55,15 @@ public class SmartParkingBoyTest {
 
 
     @Test
-    void should_park_car_in_have_more_empty_positions_parking_lot_when_park_given_car(){
+    void should_park_car_in_have_more_empty_positions_parking_lot_when_park_given_car() {
         //given
         ParkingLot parkingLotA = new ParkingLot();
         ParkingLot parkingLotB = new ParkingLot(20);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA, parkingLotB));
         //when
         smartParkingBoy.park(new Car());
         //then
-        assertTrue(parkingLotB.getRemainingPosition()<20);
+        assertTrue(parkingLotB.getRemainingPosition() < 20);
     }
 
 }

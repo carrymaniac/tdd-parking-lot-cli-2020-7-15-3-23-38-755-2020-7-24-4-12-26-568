@@ -1,7 +1,6 @@
 package com.oocl.cultivation;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @ProjectName: parking-lot
@@ -9,35 +8,22 @@ import java.util.Optional;
  * @ClassName: ParkingBoy
  * @Author: carrymaniac
  * @Description:
- * @Date: 2020/7/24 3:47 下午
+ * @Date: 2020/7/26 3:46 下午
  * @Version:
  */
-public class ParkingBoy {
+public interface ParkingBoy {
 
-    private List<ParkingLot> parkingLots;
+    ParkResult park(Car car);
 
-    public ParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
-    }
+    List<ParkingLot> getParkingLots();
 
-    public ParkResult park(Car car) {
-        Optional<ParkingLot> first = parkingLots.stream()
-                .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                .findFirst();
-        if (first.isPresent()) {
-            return first.get().park(car);
-        } else {
-            return this.parkingLots.get(0).park(car);
-        }
-    }
-
-    public FetchResult fetch(CarTicket carTicket) {
-        for (int i = 0; i < parkingLots.size(); i++) {
-            FetchResult fetchResult = parkingLots.get(i).fetch(carTicket);
+    default FetchResult fetch(CarTicket carTicket) {
+        for (int i = 0; i < this.getParkingLots().size(); i++) {
+            FetchResult fetchResult = this.getParkingLots().get(i).fetch(carTicket);
             if (fetchResult.getCar() != null) {
                 return fetchResult;
             }
         }
-        return parkingLots.get(0).fetch(carTicket);
+        return this.getParkingLots().get(0).fetch(carTicket);
     }
 }
