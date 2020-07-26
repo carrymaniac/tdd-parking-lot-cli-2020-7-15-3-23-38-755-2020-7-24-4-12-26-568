@@ -54,5 +54,17 @@ public class ParkingBoyTest {
         assertNotNull(parkResult.getCarTicket());
     }
 
+    @Test
+    void should_return_success_fetch_result_when_fetch_given_11st_car_ticket(){
+        ParkingBoy boy = new ParkingBoy(Arrays.asList(new ParkingLot(),new ParkingLot()));
+        for (int i = 0; i < 10; i++) {
+            boy.park(new Car());
+        }
+        CarTicket carTicket = boy.park(new Car()).getCarTicket();
+        FetchResult fetchResult = boy.fetch(carTicket);
+        assertNotNull(fetchResult);
+        assertNotNull(fetchResult.getCar());
+    }
+
 
 }
