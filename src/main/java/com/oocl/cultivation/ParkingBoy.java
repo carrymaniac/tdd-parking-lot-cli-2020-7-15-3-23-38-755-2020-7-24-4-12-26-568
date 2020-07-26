@@ -18,10 +18,10 @@ public class ParkingBoy {
     }
 
     public ParkResult park(Car car) {
-        return null;
+        return parkingLot.park(car);
     }
 
     public FetchResult fetch(CarTicket carTicket) {
-        return null;
+        return parkingLot.fetch(carTicket);
     }
 }
