@@ -1,5 +1,10 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * @ProjectName: parking-lot
  * @Package: com.oocl.cultivation
@@ -11,17 +16,17 @@ package com.oocl.cultivation;
  */
 public class ParkingBoy {
 
-    private ParkingLot parkingLot;
+    private List<ParkingLot> parkingLots;
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
     public ParkResult park(Car car) {
-        return parkingLot.park(car);
+        return parkingLots.get(0).park(car);
     }
 
     public FetchResult fetch(CarTicket carTicket) {
-        return parkingLot.fetch(carTicket);
+      return parkingLots.get(0).fetch(carTicket);
     }
 }
