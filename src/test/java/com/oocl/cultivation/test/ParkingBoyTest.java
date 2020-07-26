@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.ParkingBoy;
-import com.oocl.cultivation.ParkingLot;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,38 +16,28 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ParkingBoyTest {
     @Test
-    void should_return_car_ticket_when_park_given_car() {
+    void should_return_park_result_when_park_given_car() {
         //given
         Car car = new Car();
         ParkingBoy boy = new ParkingBoy(new ParkingLot());
         //when
-        CarTicket carTicket = boy.park(car);
+        ParkResult parkResult = boy.park(car);
         //then
-        assertNotNull(carTicket);
+        assertNotNull(parkResult);
     }
 
     @Test
-    void should_fetch_car_when_fetch_given_car_ticket() {
+    void should_return_fetch_result_when_fetch_given_car_ticket() {
         //given
         Car car = new Car();
         ParkingBoy boy = new ParkingBoy(new ParkingLot());
-        CarTicket carTicket = boy.park(car);
+        CarTicket carTicket = boy.park(car).getCarTicket();
         //when
-        Car fetchCar = boy.fetch(carTicket);
+        FetchResult fetchResult = boy.fetch(carTicket);
         //then
-        assertNotNull(fetchCar);
-        assertEquals(car,fetchCar);
+        assertNotNull(fetchResult);
+        assertEquals(car,fetchResult.getCar());
     }
 
-    @Test
-    void should_return_null_when_park_given_parked_car(){
-        //given
-        Car car = new Car();
-        ParkingBoy boy = new ParkingBoy(new ParkingLot());
-        CarTicket carTicket = boy.park(car);
-        //when
-        CarTicket parkAgain = boy.park(car);
-        assertNull(parkAgain);
-    }
 
 }

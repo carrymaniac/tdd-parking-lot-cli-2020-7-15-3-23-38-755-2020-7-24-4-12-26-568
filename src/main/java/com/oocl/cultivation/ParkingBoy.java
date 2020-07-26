@@ -17,11 +17,11 @@ public class ParkingBoy {
         this.parkingLot = parkingLot;
     }
 
-    public CarTicket park(Car car) {
-        return parkingLot.park(car).getCarTicket();
+    public ParkResult park(Car car) {
+        return null;
     }
 
-    public Car fetch(CarTicket carTicket) {
-        return parkingLot.fetch(carTicket).getCar();
+    public FetchResult fetch(CarTicket carTicket) {
+        return null;
     }
 }
