@@ -40,7 +40,6 @@ public class SmartParkingBoyTest {
         //then
         assertNotNull(fetchResult);
         assertEquals(car,fetchResult.getCar());
-
     }
 
 }

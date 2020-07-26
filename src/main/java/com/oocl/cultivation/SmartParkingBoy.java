@@ -19,10 +19,10 @@ public class SmartParkingBoy {
     }
 
     public ParkResult park(Car car){
-        return null;
+        return parkingLots.get(0).park(car);
     }
 
     public FetchResult fetch(CarTicket ticket){
-        return null;
+        return parkingLots.get(0).fetch(ticket);
     }
 }
