@@ -1,9 +1,7 @@
 package com.oocl.cultivation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @ProjectName: parking-lot
@@ -26,14 +24,20 @@ public class ParkingBoy {
         Optional<ParkingLot> first = parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
                 .findFirst();
-        if(first.isPresent()){
+        if (first.isPresent()) {
             return first.get().park(car);
-        }else {
+        } else {
             return this.parkingLots.get(0).park(car);
         }
     }
 
     public FetchResult fetch(CarTicket carTicket) {
-      return parkingLots.get(0).fetch(carTicket);
+        for (int i = 0; i < parkingLots.size(); i++) {
+            FetchResult fetchResult = parkingLots.get(i).fetch(carTicket);
+            if (fetchResult.getCar() != null) {
+                return fetchResult;
+            }
+        }
+        return parkingLots.get(0).fetch(carTicket);
     }
 }
