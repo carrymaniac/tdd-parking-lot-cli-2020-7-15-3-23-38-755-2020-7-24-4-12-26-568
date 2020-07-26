@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @ProjectName: parking-lot
@@ -42,4 +41,17 @@ public class SmartParkingBoyTest {
         assertEquals(car,fetchResult.getCar());
     }
 
+
+    @Test
+    void should_park_car_in_have_more_empty_positions_parking_lot_when_park_given_car(){
+        //given
+        Car car = new Car();
+        ParkingLot parkingLotA = new ParkingLot();
+        ParkingLot parkingLotB = new ParkingLot(20);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
+        //when
+        smartParkingBoy.park(new Car());
+        //then
+        assertTrue(parkingLotB.getRemainingPosition()<20);
+    }
 }
