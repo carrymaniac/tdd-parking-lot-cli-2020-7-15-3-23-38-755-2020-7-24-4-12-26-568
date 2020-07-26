@@ -15,7 +15,7 @@ public class ParkingLot {
     }
 
     public ParkResult park(Car car) {
-        if (capacity-parkingRoom.size()>0&&!parkingRoom.containsValue(car)) {
+        if (this.getRemainingPosition()>0&&!parkingRoom.containsValue(car)) {
             CarTicket carTicket = new CarTicket();
             parkingRoom.put(carTicket, car);
             return new ParkResult("",carTicket);
@@ -33,5 +33,9 @@ public class ParkingLot {
             return new FetchResult("Unrecognized parking ticket.",null);
         }
         return new FetchResult("success",remove);
+    }
+
+    public int getRemainingPosition(){
+        return this.capacity-parkingRoom.size();
     }
 }

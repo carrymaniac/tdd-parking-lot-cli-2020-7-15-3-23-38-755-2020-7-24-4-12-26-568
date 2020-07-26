@@ -41,6 +41,8 @@ public class ParkingBoyTest {
         assertEquals(car,fetchResult.getCar());
     }
 
+
+
     @Test
     void should_return_success_park_result_when_park_given_11_cars(){
         ParkingBoy boy = new ParkingBoy(Arrays.asList(new ParkingLot(),new ParkingLot()));

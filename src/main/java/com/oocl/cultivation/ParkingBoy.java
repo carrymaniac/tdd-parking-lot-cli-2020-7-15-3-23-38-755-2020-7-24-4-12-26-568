@@ -23,7 +23,14 @@ public class ParkingBoy {
     }
 
     public ParkResult park(Car car) {
-        return parkingLots.get(0).park(car);
+        Optional<ParkingLot> first = parkingLots.stream()
+                .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
+                .findFirst();
+        if(first.isPresent()){
+            return first.get().park(car);
+        }else {
+            return this.parkingLots.get(0).park(car);
+        }
     }
 
     public FetchResult fetch(CarTicket carTicket) {
