@@ -1,9 +1,10 @@
 package com.oocl.cultivation;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class SmartParkingBoy implements ParkingBoy {
-    List<ParkingLot> parkingLots;
+    private final List<ParkingLot> parkingLots;
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
@@ -13,7 +14,7 @@ public class SmartParkingBoy implements ParkingBoy {
     public ParkResult park(Car car) {
         return parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                .max((a, b) -> a.getRemainingPosition() >= b.getRemainingPosition() ? 1 : -1)
+                .max(Comparator.comparingDouble(a-> a.getRemainingPosition()))
                 .orElse(this.parkingLots.get(0)).park(car);
     }
 

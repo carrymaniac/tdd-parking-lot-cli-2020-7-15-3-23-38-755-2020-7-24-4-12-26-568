@@ -1,10 +1,11 @@
 package com.oocl.cultivation;
 
+import java.util.Comparator;
 import java.util.List;
 
 
 public class SuperSmartParkingBoy implements ParkingBoy {
-    List<ParkingLot> parkingLots;
+    private final List<ParkingLot> parkingLots;
 
     public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
@@ -14,7 +15,7 @@ public class SuperSmartParkingBoy implements ParkingBoy {
     public ParkResult park(Car car) {
         return parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                .max((a, b) -> (double) a.getRemainingPosition() / (double) a.getCapacity() >= (double) b.getRemainingPosition() / (double) b.getCapacity() ? 1 : -1)
+                .max(Comparator.comparingDouble(a -> (double) a.getRemainingPosition() / (double) a.getCapacity()))
                 .orElse(this.parkingLots.get(0))
                 .park(car);
     }

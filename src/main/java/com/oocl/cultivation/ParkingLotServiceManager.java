@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ParkingLotServiceManager implements ParkingBoy {
-    List<Parkable> parkables = new ArrayList<>();
+    private final List<Parkable> parkables = new ArrayList<>();
 
     public ParkingLotServiceManager(Parkable... parkables) {
         this.getParkingLots().addAll(Arrays.asList(parkables));

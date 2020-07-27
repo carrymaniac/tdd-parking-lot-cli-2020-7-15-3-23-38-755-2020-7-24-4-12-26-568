@@ -4,7 +4,7 @@ import java.util.List;
 
 
 public class NormalParkingBoy implements ParkingBoy {
-    List<ParkingLot> parkingLots;
+    private final List<ParkingLot> parkingLots;
 
     public NormalParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
