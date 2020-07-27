@@ -12,15 +12,11 @@ public class SuperSmartParkingBoy implements ParkingBoy{
 
     @Override
     public ParkResult park(Car car) {
-        Optional<ParkingLot> first = parkingLots.stream()
+        return parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                //todo
-                .max((a, b) -> (double)a.getRemainingPosition()/(double)a.getCapacity() >= (double)b.getRemainingPosition()/(double)b.getCapacity() ? 1 : -1);
-        if (first.isPresent()) {
-            return first.get().park(car);
-        } else {
-            return this.parkingLots.get(0).park(car);
-        }
+                .max((a, b) -> (double)a.getRemainingPosition()/(double)a.getCapacity() >= (double)b.getRemainingPosition()/(double)b.getCapacity() ? 1 : -1)
+                .orElse(this.parkingLots.get(0))
+                .park(car);
     }
 
     @Override
