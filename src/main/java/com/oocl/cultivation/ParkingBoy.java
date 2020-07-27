@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-public interface ParkingBoy extends ParkingAble{
+public interface ParkingBoy extends Parkable {
 
     List<ParkingLot> getParkingLots();
 
