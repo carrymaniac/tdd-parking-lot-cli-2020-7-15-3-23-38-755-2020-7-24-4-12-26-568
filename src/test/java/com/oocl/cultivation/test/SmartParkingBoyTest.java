@@ -42,7 +42,6 @@ public class SmartParkingBoyTest {
         //when
         ParkResult parkResult = smartParkingBoy.park(new Car());
         FetchResult fetchResult = smartParkingBoy.fetch(parkResult.getCarTicket());
-        //todo
         assertNotNull(fetchResult);
         assertNotNull(fetchResult.getCar());
     }
@@ -57,7 +56,7 @@ public class SmartParkingBoyTest {
         //when
         smartParkingBoy.park(new Car());
         for (int i = 0; i < 10; i++) {
-            
+
         }
         //then
         assertEquals(19, parkingLotB.getRemainingPosition());
