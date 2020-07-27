@@ -13,14 +13,9 @@ public class NormalParkingBoy implements ParkingBoy {
 
     @Override
     public ParkResult park(Car car) {
-        Optional<ParkingLot> first = parkingLots.stream()
+        return parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                .findFirst();
-        if (first.isPresent()) {
-            return first.get().park(car);
-        } else {
-            return this.parkingLots.get(0).park(car);
-        }
+                .findFirst().orElse(this.parkingLots.get(0)).park(car);
     }
 
     @Override
