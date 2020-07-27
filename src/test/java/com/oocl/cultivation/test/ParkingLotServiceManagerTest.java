@@ -21,7 +21,7 @@ public class ParkingLotServiceManagerTest {
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA,parkingLotB,parkingBoy,smartParkingBoy);
         List<ParkResult> parkResults = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            parkingLotServiceManager.park(new Car());
+            parkResults.add(parkingLotServiceManager.park(new Car()));
         }
         assertEquals(4,parkResults.size());
         parkResults.stream().forEach(parkResult -> {
