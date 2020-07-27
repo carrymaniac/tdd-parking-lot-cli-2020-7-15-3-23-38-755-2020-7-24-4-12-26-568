@@ -20,6 +20,6 @@ public interface ParkingBoy extends Parkable {
 
     @Override
     default int getRemainingPosition() {
-        return getParkingLots().stream().map(Parkable::getRemainingPosition).reduce((x, y) -> x + y).orElse(0);
+        return getParkingLots().stream().map(Parkable::getRemainingPosition).reduce(Integer::sum).orElse(0);
     }
 }
