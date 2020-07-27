@@ -7,15 +7,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation.test
- * @ClassName: SuperSmartBoy
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/26 4:40 下午
- * @Version:
- */
+
 public class SuperSmartBoyTest {
     @Test
     void should_return_park_result_when_park_given_car() {
@@ -52,6 +44,6 @@ public class SuperSmartBoyTest {
         ParkResult parkResult = superSmartParkingBoy.park(new Car());
         //then
         assertNotNull(parkResult);
-        assertTrue(parkingLotB.getRemainingPosition()<10);
+        assertEquals(9,parkingLotB.getRemainingPosition());
     }
 }

@@ -1,22 +1,13 @@
 package com.oocl.cultivation;
 
+
 import java.util.List;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation
- * @ClassName: ParkingBoy
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/26 3:46 下午
- * @Version:
- */
-public interface ParkingBoy {
-
-    ParkResult park(Car car);
+public interface ParkingBoy extends ParkingAble{
 
     List<ParkingLot> getParkingLots();
 
+    @Override
     default FetchResult fetch(CarTicket carTicket) {
         for (int i = 0; i < this.getParkingLots().size(); i++) {
             FetchResult fetchResult = this.getParkingLots().get(i).fetch(carTicket);
@@ -25,5 +16,10 @@ public interface ParkingBoy {
             }
         }
         return this.getParkingLots().get(0).fetch(carTicket);
+    }
+
+    @Override
+    default int getRemainingPosition(){
+        return getParkingLots().stream().map(ParkingLot::getRemainingPosition).reduce((x,y)-> x+y).orElse(0);
     }
 }

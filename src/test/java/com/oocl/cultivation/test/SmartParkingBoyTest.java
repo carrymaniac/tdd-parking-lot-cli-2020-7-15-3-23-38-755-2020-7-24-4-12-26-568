@@ -5,17 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation.test
- * @ClassName: SmartParkingBoyTest
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/26 12:51 下午
- * @Version:
- */
+
 public class SmartParkingBoyTest {
     @Test
     void should_return_park_result_when_park_given_car() {
@@ -49,6 +42,7 @@ public class SmartParkingBoyTest {
         //when
         ParkResult parkResult = smartParkingBoy.park(new Car());
         FetchResult fetchResult = smartParkingBoy.fetch(parkResult.getCarTicket());
+        //todo
         assertNotNull(fetchResult);
         assertNotNull(fetchResult.getCar());
     }
@@ -62,8 +56,11 @@ public class SmartParkingBoyTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA, parkingLotB));
         //when
         smartParkingBoy.park(new Car());
+        for (int i = 0; i < 10; i++) {
+            
+        }
         //then
-        assertTrue(parkingLotB.getRemainingPosition() < 20);
+        assertEquals(19, parkingLotB.getRemainingPosition());
     }
 
 }

@@ -1,14 +1,6 @@
 package com.oocl.cultivation;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation
- * @ClassName: ParkResult
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/25 4:06 下午
- * @Version:
- */
+
 public class ParkResult {
     private CarTicket carTicket;
     private String message;

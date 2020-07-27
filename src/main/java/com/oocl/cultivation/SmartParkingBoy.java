@@ -3,15 +3,6 @@ package com.oocl.cultivation;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation
- * @ClassName: SmartParkingBoy
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/26 12:57 下午
- * @Version:
- */
 public class SmartParkingBoy implements ParkingBoy {
     List<ParkingLot> parkingLots;
 

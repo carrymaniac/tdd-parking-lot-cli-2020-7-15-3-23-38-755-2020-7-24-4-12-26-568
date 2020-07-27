@@ -8,15 +8,6 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation.test
- * @ClassName: ParkingBoyTest
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/24 3:44 下午
- * @Version:
- */
 public class NormalParkingBoyTest {
     @Test
     void should_return_park_result_when_park_given_car() {

@@ -2,15 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.Objects;
 
-/**
- * @ProjectName: parking-lot
- * @Package: com.oocl.cultivation
- * @ClassName: FetchResult
- * @Author: carrymaniac
- * @Description:
- * @Date: 2020/7/25 3:50 下午
- * @Version:
- */
+
 public class FetchResult {
     private String message;
     private Car car;
