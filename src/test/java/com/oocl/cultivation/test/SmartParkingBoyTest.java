@@ -56,9 +56,6 @@ public class SmartParkingBoyTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLotA, parkingLotB));
         //when
         smartParkingBoy.park(new Car());
-        for (int i = 0; i < 10; i++) {
-
-        }
         //then
         assertEquals(19, parkingLotB.getRemainingPosition());
     }
