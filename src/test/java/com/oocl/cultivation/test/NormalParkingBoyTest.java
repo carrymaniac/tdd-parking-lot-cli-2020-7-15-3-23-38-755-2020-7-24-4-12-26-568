@@ -25,7 +25,7 @@ public class NormalParkingBoyTest {
     void should_return_fetch_result_when_fetch_given_car_ticket() {
         //given
         Car car = new Car();
-        NormalParkingBoy boy = new NormalParkingBoy(Arrays.asList(new ParkingLot()));
+        NormalParkingBoy boy = new NormalParkingBoy(Collections.singletonList(new ParkingLot()));
         CarTicket carTicket = boy.park(car).getCarTicket();
         //when
         FetchResult fetchResult = boy.fetch(carTicket);
