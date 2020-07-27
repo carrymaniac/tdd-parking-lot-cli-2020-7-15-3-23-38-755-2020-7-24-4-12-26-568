@@ -8,7 +8,7 @@ public class ParkingLotServiceManager implements ParkingBoy{
     }
 
     @Override
-    public List<ParkingLot> getParkingLots() {
+    public List<Parkable> getParkingLots() {
         return null;
     }
 

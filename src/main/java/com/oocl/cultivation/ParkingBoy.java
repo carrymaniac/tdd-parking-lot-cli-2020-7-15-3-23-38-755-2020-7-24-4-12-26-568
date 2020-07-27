@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ParkingBoy extends Parkable {
 
-    List<ParkingLot> getParkingLots();
+    List<? extends Parkable> getParkingLots();
 
     @Override
     default FetchResult fetch(CarTicket carTicket) {
@@ -20,6 +20,6 @@ public interface ParkingBoy extends Parkable {
 
     @Override
     default int getRemainingPosition(){
-        return getParkingLots().stream().map(ParkingLot::getRemainingPosition).reduce((x,y)-> x+y).orElse(0);
+        return getParkingLots().stream().map(Parkable::getRemainingPosition).reduce((x,y)-> x+y).orElse(0);
     }
 }
