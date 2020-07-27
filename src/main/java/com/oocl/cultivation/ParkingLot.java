@@ -18,6 +18,7 @@ public class ParkingLot implements Parkable {
         return capacity;
     }
 
+    @Override
     public ParkResult park(Car car) {
         if (this.getRemainingPosition() > 0 && !parkingRoom.containsValue(car)) {
             CarTicket carTicket = new CarTicket();
@@ -28,6 +29,7 @@ public class ParkingLot implements Parkable {
         }
     }
 
+    @Override
     public FetchResult fetch(CarTicket carTicket) {
         if (carTicket == null) {
             return new FetchResult("Please provide your parking ticket.", null);
@@ -39,6 +41,7 @@ public class ParkingLot implements Parkable {
         return new FetchResult("success", remove);
     }
 
+    @Override
     public int getRemainingPosition() {
         return this.capacity - parkingRoom.size();
     }
