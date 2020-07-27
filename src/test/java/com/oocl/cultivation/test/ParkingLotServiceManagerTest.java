@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +17,7 @@ public class ParkingLotServiceManagerTest {
     void should_park_4_car_when_park_given_two_parking_boy_and_two_parking_lot_and_4_car() {
         ParkingLot parkingLotA = new ParkingLot(1);
         ParkingLot parkingLotB = new ParkingLot(1);
-        ParkingBoy parkingBoy = new NormalParkingBoy(Arrays.asList(new ParkingLot(1)));
+        ParkingBoy parkingBoy = new NormalParkingBoy(Collections.singletonList(new ParkingLot(1)));
         ParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(1),new ParkingLot(1)));
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA,parkingLotB,parkingBoy,smartParkingBoy);
         List<ParkResult> parkResults = new ArrayList<>();
@@ -24,16 +25,14 @@ public class ParkingLotServiceManagerTest {
             parkResults.add(parkingLotServiceManager.park(new Car()));
         }
         assertEquals(4,parkResults.size());
-        parkResults.forEach(parkResult -> {
-            assertNotNull(parkResult.getCarTicket());
-        });
+        parkResults.forEach(parkResult -> assertNotNull(parkResult.getCarTicket()));
     }
 
     @Test
     void should_return_4_car_when_fetch_given_4_correct_ticket(){
         ParkingLot parkingLotA = new ParkingLot(1);
         ParkingLot parkingLotB = new ParkingLot(1);
-        ParkingBoy parkingBoy = new NormalParkingBoy(Arrays.asList(new ParkingLot(1)));
+        ParkingBoy parkingBoy = new NormalParkingBoy(Collections.singletonList(new ParkingLot(1)));
         ParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(1),new ParkingLot(1)));
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA,parkingLotB,parkingBoy,smartParkingBoy);
         List<ParkResult> parkResults = new ArrayList<>();

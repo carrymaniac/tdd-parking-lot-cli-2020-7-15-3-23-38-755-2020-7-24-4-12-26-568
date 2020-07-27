@@ -4,6 +4,7 @@ import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -13,7 +14,7 @@ public class NormalParkingBoyTest {
     void should_return_park_result_when_park_given_car() {
         //given
         Car car = new Car();
-        NormalParkingBoy boy = new NormalParkingBoy(Arrays.asList(new ParkingLot()));
+        NormalParkingBoy boy = new NormalParkingBoy(Collections.singletonList(new ParkingLot()));
         //when
         ParkResult parkResult = boy.park(car);
         //then

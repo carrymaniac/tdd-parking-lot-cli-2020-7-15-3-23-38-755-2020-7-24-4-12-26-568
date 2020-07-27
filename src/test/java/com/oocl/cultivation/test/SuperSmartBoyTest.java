@@ -4,6 +4,7 @@ import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +13,7 @@ public class SuperSmartBoyTest {
     @Test
     void should_return_park_result_when_park_given_car() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Arrays.asList(new ParkingLot()));
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot()));
         //when
         ParkResult parkResult = superSmartParkingBoy.park(new Car());
         //then
@@ -24,7 +25,7 @@ public class SuperSmartBoyTest {
     void should_return_fetch_result_when_fetch_given_car_ticket() {
         //given
         Car car = new Car();
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Arrays.asList(new ParkingLot()));
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot()));
         ParkResult parkResult = superSmartParkingBoy.park(car);
         //when
         FetchResult fetchResult = superSmartParkingBoy.fetch(parkResult.getCarTicket());
