@@ -18,23 +18,23 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLotA = new ParkingLot(1);
         ParkingLot parkingLotB = new ParkingLot(1);
         ParkingBoy parkingBoy = new NormalParkingBoy(Collections.singletonList(new ParkingLot(1)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(1),new ParkingLot(1)));
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA,parkingLotB,parkingBoy,smartParkingBoy);
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(1), new ParkingLot(1)));
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA, parkingLotB, parkingBoy, smartParkingBoy);
         List<ParkResult> parkResults = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             parkResults.add(parkingLotServiceManager.park(new Car()));
         }
-        assertEquals(4,parkResults.size());
+        assertEquals(4, parkResults.size());
         parkResults.forEach(parkResult -> assertNotNull(parkResult.getCarTicket()));
     }
 
     @Test
-    void should_return_4_car_when_fetch_given_4_correct_ticket(){
+    void should_return_4_car_when_fetch_given_4_correct_ticket() {
         ParkingLot parkingLotA = new ParkingLot(1);
         ParkingLot parkingLotB = new ParkingLot(1);
         ParkingBoy parkingBoy = new NormalParkingBoy(Collections.singletonList(new ParkingLot(1)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(1),new ParkingLot(1)));
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA,parkingLotB,parkingBoy,smartParkingBoy);
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(1), new ParkingLot(1)));
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLotA, parkingLotB, parkingBoy, smartParkingBoy);
         List<ParkResult> parkResults = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             parkResults.add(parkingLotServiceManager.park(new Car()));

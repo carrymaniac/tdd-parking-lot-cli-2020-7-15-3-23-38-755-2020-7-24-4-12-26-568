@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class SuperSmartBoyTest {
@@ -38,13 +39,13 @@ public class SuperSmartBoyTest {
     void should_park_larger_available_position_rate_park_when_park_given_car() {
         ParkingLot parkingLotA = new ParkingLot(20);
         ParkingLot parkingLotB = new ParkingLot();
-        for(int i = 0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             parkingLotA.park(new Car());
         }
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Arrays.asList(parkingLotA,parkingLotB));
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Arrays.asList(parkingLotA, parkingLotB));
         ParkResult parkResult = superSmartParkingBoy.park(new Car());
         //then
         assertNotNull(parkResult);
-        assertEquals(9,parkingLotB.getRemainingPosition());
+        assertEquals(9, parkingLotB.getRemainingPosition());
     }
 }
