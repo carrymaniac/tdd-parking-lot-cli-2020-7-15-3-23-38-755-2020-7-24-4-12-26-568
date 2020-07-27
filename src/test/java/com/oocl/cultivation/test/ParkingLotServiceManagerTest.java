@@ -24,7 +24,7 @@ public class ParkingLotServiceManagerTest {
             parkResults.add(parkingLotServiceManager.park(new Car()));
         }
         assertEquals(4,parkResults.size());
-        parkResults.stream().forEach(parkResult -> {
+        parkResults.forEach(parkResult -> {
             assertNotNull(parkResult.getCarTicket());
         });
     }
@@ -40,7 +40,7 @@ public class ParkingLotServiceManagerTest {
         for (int i = 0; i < 4; i++) {
             parkResults.add(parkingLotServiceManager.park(new Car()));
         }
-        parkResults.stream().forEach(parkResult -> {
+        parkResults.forEach(parkResult -> {
             FetchResult fetch = parkingLotServiceManager.fetch(parkResult.getCarTicket());
             assertNotNull(fetch.getCar());
         });
