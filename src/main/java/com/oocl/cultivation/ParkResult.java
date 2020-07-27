@@ -14,15 +14,8 @@ public class ParkResult {
         return carTicket;
     }
 
-    public void setCarTicket(CarTicket carTicket) {
-        this.carTicket = carTicket;
-    }
-
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
