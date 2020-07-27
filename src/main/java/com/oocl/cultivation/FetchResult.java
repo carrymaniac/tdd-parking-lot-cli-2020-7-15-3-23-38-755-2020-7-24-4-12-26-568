@@ -4,8 +4,8 @@ import java.util.Objects;
 
 
 public class FetchResult {
-    private String message;
-    private Car car;
+    private final String message;
+    private final Car car;
 
     public FetchResult(String message, Car car) {
         this.message = message;

@@ -2,8 +2,8 @@ package com.oocl.cultivation;
 
 
 public class ParkResult {
-    private CarTicket carTicket;
-    private String message;
+    private final CarTicket carTicket;
+    private final String message;
 
     public ParkResult(String message, CarTicket carTicket) {
         this.carTicket = carTicket;

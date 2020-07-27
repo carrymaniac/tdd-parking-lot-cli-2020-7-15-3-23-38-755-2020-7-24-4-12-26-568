@@ -3,10 +3,10 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
-public class ParkingLotServiceManager implements ParkingBoy{
+public class ParkingLotServiceManager implements ParkingBoy {
     List<Parkable> parkables = new ArrayList<>();
+
     public ParkingLotServiceManager(Parkable... parkables) {
         this.getParkingLots().addAll(Arrays.asList(parkables));
     }
