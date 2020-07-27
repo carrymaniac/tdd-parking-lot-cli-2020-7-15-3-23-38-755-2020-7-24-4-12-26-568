@@ -14,7 +14,7 @@ public class SmartParkingBoy implements ParkingBoy {
     public ParkResult park(Car car) {
         return parkingLots.stream()
                 .filter(parkingLot -> parkingLot.getRemainingPosition() > 0)
-                .max(Comparator.comparingDouble(a-> a.getRemainingPosition()))
+                .max(Comparator.comparingInt(ParkingLot::getRemainingPosition))
                 .orElse(this.parkingLots.get(0)).park(car);
     }
 
